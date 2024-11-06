@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Upload Button (20-11-23)</title>
+    <meta name="author" content="Aurélio-Sol">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700&amp;display=swap">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js"></script>
+    <style>
+      body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #000;
+    font-family: "Inter", Arial, sans-serif;
+}
+
+.publish-button {
+    outline: none;
+    border: none;
+    background: #008cff;
+    padding: 15px 25px;
+    border-radius: 9px;
+    cursor: pointer;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s; /* Adiciona uma transição suave */
+}
+
+.publish-button:hover {
+    transform: scale(1.1); /* Aumenta o botão em 10% ao passar o mouse */
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.raindrop {
+    position: absolute;
+    top: 5px;
+    font-size: 10px; /* Diminuído de 20px para 16px */
+    color: #00aaff;
+    opacity: 0;
+    animation: fall 1s ease-in-out forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+}  
+    </style>
+</head>
+<body>
+    <button class="publish-button" onclick="startRain()">
+        <div class="icon">
+            <!-- SVG de nuvem como ícone principal -->
+            <svg id="cloud-icon" width="80" height="80" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50.7,31.4c0.1-0.6,0.2-1.1,0.2-1.7c0-7.2-5.8-13-13-13c-4.3,0-8.1,2.1-10.4,5.4
+                c-1.5-0.9-3.2-1.4-5-1.4c-5.8,0-10.6,4.7-10.6,10.6c0,0.7,0.1,1.5,0.3,2.2C5.7,34.5,2,39.1,2,44.8c0,6.6,5.4,12,12,12h34
+                c5.8,0,10.6-4.7,10.6-10.6C58.7,36.5,55.2,32.4,50.7,31.4z" fill="#B0BEC5"/>
+            </svg>
+        </div>
+        <div class="text">CLIQUE AQUI</div>
+    </button>
+
+    <script>
+function startRain() {
+    const iconContainer = document.querySelector('.icon');
+    
+    // Gerar pingos de chuva durante 3 segundos
+    const rainInterval = setInterval(() => {
+        for (let i = 0; i < 5; i++) {
+            createRaindrop(iconContainer);
+        }
+    }, 600); // Intervalo entre cada grupo de pingos
+
+    // Parar os pingos após 3 segundos
+    setTimeout(() => clearInterval(rainInterval), 3000);
+}
+
+function createRaindrop(parent) {
+    const raindrop = document.createElement('div');
+    raindrop.classList.add('raindrop');
+    raindrop.textContent = '💧';
+    parent.appendChild(raindrop);
+
+    // Posição inicial e animação do pingo de chuva
+    gsap.set(raindrop, {
+        x: gsap.utils.random(-20, 20),
+        y: -10,
+        opacity: 1
+    });
+
+    gsap.to(raindrop, {
+        y: 60,
+        opacity: 0,
+        duration: 1.2,
+        onComplete: () => raindrop.remove()
+    });
+}
+    </script>
+</body>
+</html>

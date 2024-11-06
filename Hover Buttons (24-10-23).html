@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Buttons (24-10-23)</title>
+    <meta name="author" content="Aurélio-Sol">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html,
+  css {
+    width: 100%;
+    height: 100%;
+  }
+  
+    .position {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      margin-top: 15%;
+    }
+    #workarea {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      font-family: Raleway;
+    }
+  
+  
+    .spot {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+    }
+  
+  
+  .svg-wrapper {
+    margin-top: 0;
+    position: relative;
+    width: 150px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 3px;
+    margin-left: 5px;
+    margin-right: 5px
+  }
+  
+  
+    #shape {
+      stroke-width: 6px;
+      fill: transparent;
+      stroke: #06D6A0;
+      stroke-dasharray: 85 400;
+      stroke-dashoffset: -220;
+      transition: 1s all ease;
+    }
+    #text {
+      margin-top: -35px;
+      text-align: center;
+    }
+    #text a {
+      color: white;
+      text-decoration: none;
+      font-weight: 100;
+      font-size: 1.1em;
+    }
+  
+  .svg-wrapper:hover #shape {
+    stroke-dasharray: 50 0;
+    stroke-width: 3px;
+    stroke-dashoffset: 0;
+    stroke: #00fffc;
+  }
+  
+  
+    </style>
+</head>
+
+<body>
+    <div id="workarea">
+        <div class="position">
+      
+          <div class="svg-wrapper">
+            <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+              <rect id="shape" height="40" width="150" />
+              <div id="text">
+                <a href=""><span class="spot"></span>Like</a>
+              </div>
+            </svg>
+          </div>
+          <!--Next button -->
+          <div class="svg-wrapper">
+            <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+              <rect id="shape" height="40" width="150" />
+              <div id="text">
+                <a href=""><span class="spot"></span>Share</a>
+              </div>
+            </svg>
+          </div>
+          <!--Next button -->
+          <div class="svg-wrapper">
+            <svg height="40" width="150" xmlns="http://www.w3.org/2000/svg">
+              <rect id="shape" height="40" width="150" />
+              <div id="text">
+                <a href=""><span class="spot"></span>Follow</a>
+              </div>
+            </svg>
+          </div>
+          <!--End button -->
+      
+
+</body>
+</html>
